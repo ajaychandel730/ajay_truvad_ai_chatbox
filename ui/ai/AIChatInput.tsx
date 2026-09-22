@@ -16,7 +16,6 @@ const AIChatInput = ({ pushMessage, aiFetchLoading }: Props) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget.form);
     const message = form.get("message");
-    console.log("message:", message);
     if (!message) return;
 
     pushMessage({
