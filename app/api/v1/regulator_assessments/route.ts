@@ -8,6 +8,7 @@ import z from "zod";
 export async function GET(request: NextRequest) {
   try {
     const query = request.nextUrl.searchParams.get("query");
+
     if (!query) {
       return NextResponse.json(
         { status: "failed", message: "Please provide query." },
@@ -16,17 +17,18 @@ export async function GET(request: NextRequest) {
     }
 
     const prompt = await getAiRegulatorPrompt(query);
-
+   
     const gemini = await googleGeminiAi(prompt, {
       type: "text",
       mime_type: "application/json",
       schema: z.toJSONSchema(regulatorAccessmentJSONSchema),
     });
 
+
     const result = regulatorAccessmentJSONSchema.safeParse(
       JSON.parse(gemini.output_text as string),
     );
-
+    
     if (!result.success) {
       return NextResponse.json(
         { status: "error", message: "Something went wrong Please try later." },
@@ -41,6 +43,7 @@ export async function GET(request: NextRequest) {
           ...result.data,
           id: crypto.randomUUID(),
           created_at: Date.now().toString(),
+          created_by: "ai",
         },
       },
       { status: 200 },
@@ -49,8 +52,9 @@ export async function GET(request: NextRequest) {
     let message = "Something went wrong. Please try later.";
 
     if (err && typeof err == "object" && "message" in err) {
-      message = err.message as string;
+       console.log("consoleError:", err.message);
     }
+
     return NextResponse.json({ status: "error", message }, { status: 500 });
   }
 }

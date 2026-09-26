@@ -10,7 +10,9 @@ type Props = {
 };
 
 const AIChatInput = ({ pushMessage, aiFetchLoading }: Props) => {
+  
   const onSubmithandler = (
+    //@ts-ignore
     event: React.MouseEvent<FocusableElement, MouseEvent>,
   ) => {
     event.preventDefault();

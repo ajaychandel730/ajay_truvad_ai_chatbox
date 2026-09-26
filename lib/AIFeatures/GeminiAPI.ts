@@ -12,7 +12,6 @@ export async function googleGeminiAi(text: string, response_format:ResponseForma
   const interaction = await ai.interactions.create({
     model: "gemini-3.1-flash-lite",
     input: text,
-    tools:[{type:"google_search"}],
     response_format
   });
   

@@ -68,9 +68,9 @@ const AIButton = () => {
             >
               {messages.map((message) => {
                 if (message.created_by == "user") {
-                  return <UserMessage message={message} />;
+                  return <UserMessage key={message.id} message={message} />;
                 } else if (message.created_by == "ai") {
-                  <AIMessage message={message} />;
+                  <AIMessage key={message.id} message={message} />;
                 } else {
                   return null;
                 }
