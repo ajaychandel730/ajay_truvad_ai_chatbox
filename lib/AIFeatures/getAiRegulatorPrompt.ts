@@ -7,7 +7,7 @@ export const getAiRegulatorPrompt = async (query: string):Promise<string> => {
   const filePath = Path.join(
     process.cwd(),
     "lib",
-    "AiFeatures",
+    "AIFeatures",
     "prompts",
     "regulator_prompt.txt",
   );
