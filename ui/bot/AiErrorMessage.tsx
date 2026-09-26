@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import { BotErrorMessage } from './typescript/interfaces'
 
@@ -7,8 +8,8 @@ type Props = {
 
 const AiErrorMessage = ({message}:Props) => {
   return (
-    <div className='flex w-full items-center rounded-full bg-red-400 shadow shadow-gray-400'>
-       <p className='text-xs flex-wrap'>
+    <div className='flex w-fit items-center rounded-full  p-2 shadow shadow-gray-400'>
+       <p className='text-xs flex-wrap text-gray-700 font-medium'>
           {message.text}
        </p>
     </div>

@@ -15,7 +15,7 @@ const ChatArea = ({ messages, isLoading }: Props) => {
     <div className="max-w-4xl w-full overflow-y-auto p-8 flex flex-col gap-8 pb-32">
       {messages?.map((message) => {
         if ("label" in message && message.label == "error") {
-          return <AiErrorMessage message={message} />;
+          return <AiErrorMessage key={message.id} message={message} />;
         } else if ("created_by" in message && message.created_by == "user") {
           return <UserMessage key={message.id} content={message.text} />;
         } else if ("created_by" in message) {
