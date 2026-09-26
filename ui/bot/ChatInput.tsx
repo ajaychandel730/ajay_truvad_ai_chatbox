@@ -30,7 +30,7 @@ export function ChatInput({ pushMessage, aiFetchLoading }: Props) {
   };
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-white via-white to-transparent">
+    <div className="absolute z-10 bottom-0 left-0 right-0 p-6 bg-linear-to-t from-white via-white to-transparent">
       <form className="max-w-4xl mx-auto relative flex items-center">
         <Input
           name="query"

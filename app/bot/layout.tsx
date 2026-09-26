@@ -9,14 +9,9 @@ export const metadata: Metadata = {
 
 export default function BotLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen w-full bg-slate-50 text-slate-900">
-      {/* <Sidebar /> */}
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-white rounded-tl-2xl shadow-xl z-10 border-l border-slate-200">
-      <BotHeader />
+      <div className="flex flex-col h-dvh overflow-hidden bg-gray-50">
+        <BotHeader />
         {children}
       </div>
-    </div>
   );
 }

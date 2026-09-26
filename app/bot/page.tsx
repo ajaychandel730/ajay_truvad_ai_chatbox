@@ -7,7 +7,7 @@ import ChatBox from "@/ui/bot/ChatBox";
 
 export default function BotPage() {
   return (
-    <div className="flex flex-col items-center h-full bg-white relative">
+    <div className="flex flex-col items-center h-full  relative overflow-y-auto">
        <ChatBox/>
     </div>
   );

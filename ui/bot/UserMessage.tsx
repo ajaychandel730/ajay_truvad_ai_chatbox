@@ -11,7 +11,7 @@ export function UserMessage({ content }: UserMessageProps) {
         variant="default"
         className="border p-0! bg-sky-50 border-slate-200 w-fit"
       >
-        <Card.Content className="px-5 py-4  text-[15px] w-fit">
+        <Card.Content className="px-5 py-2  text-[15px] w-fit">
           {content}
         </Card.Content>
       </Card>
