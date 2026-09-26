@@ -30,7 +30,7 @@ const ChatBox = () => {
 
       const data = await res.json();
 
-      if (data?.status == "ok") {
+      if (data.status == "ok") {
         const aiResponse: BotChatMessage = data?.result;
         setMessages((oldMessages) => [...oldMessages, aiResponse]);
       } else {
