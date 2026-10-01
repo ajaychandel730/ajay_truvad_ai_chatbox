@@ -1,0 +1,7 @@
+allowBuilds:
+  '@google/genai': true
+  protobufjs: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@langchain/core@1.2.14'
+  - langchain@1.5.15

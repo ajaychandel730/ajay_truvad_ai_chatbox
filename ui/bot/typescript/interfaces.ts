@@ -13,13 +13,7 @@ export interface BotUserMessage {
 export interface BotAiMessage {
   id: string;
   created_by: "ai";
-  summary: string;
-  changes: string[];
-  effective_date: string;
-  impacted_teams: string[];
-  actions: string[];
-  status: "effective" | "upcoming" | "expired" | "unknown";
-  citations: Citation[];
+  text:string
 }
 
 export interface BotErrorMessage {
@@ -27,3 +21,12 @@ export interface BotErrorMessage {
   label:"error";
   text: string;
 }
+
+
+  // summary: string;
+  // changes: string[];
+  // effective_date: string;
+  // impacted_teams: string[];
+  // actions: string[];
+  // status: "effective" | "upcoming" | "expired" | "unknown";
+  // citations: Citation[];

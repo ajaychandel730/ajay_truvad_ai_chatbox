@@ -8,6 +8,7 @@ import { Skeleton, Spinner } from "@heroui/react";
 import { AILoadingIndicator } from "./AILoadingIndicator";
 import { Sparkles } from "lucide-react";
 import ChatEmptyState from "./ChatEmptyState";
+import AiRAGCard from "./AiRAGCard";
 
 type Props = {
   messages: BotChatMessage[];
@@ -37,15 +38,9 @@ const ChatArea = ({ messages, isLoading, onChipClick }: Props) => {
           return <UserMessage key={message.id} content={message.text} />;
         } else if ("created_by" in message) {
           return (
-            <AIResponseCard
+            <AiRAGCard
               key={message.id}
-              summary={message.summary}
-              changes={message.changes}
-              effectiveDate={message.effective_date}
-              status={message.status}
-              impactedTeams={message.impacted_teams}
-              actions={message.actions}
-              citations={message.citations}
+              text={message.text}
             />
           );
         }
