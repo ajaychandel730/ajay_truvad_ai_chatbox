@@ -18,7 +18,7 @@ export function ChatInput({ pushMessage, aiFetchLoading }: Props) {
     event.preventDefault();
     const form = new FormData(event.currentTarget.form);
     const message = form.get("query");
-    console.log("message:", message);
+   
     if (!message) return;
 
     pushMessage({
@@ -27,6 +27,8 @@ export function ChatInput({ pushMessage, aiFetchLoading }: Props) {
       text: message.toString(),
       created_at: Date.now().toString(),
     });
+    
+    event.currentTarget.form.reset();
   };
 
   return (
