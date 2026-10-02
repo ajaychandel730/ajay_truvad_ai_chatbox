@@ -64,7 +64,7 @@ const ChatBox = () => {
 
         setMessages((oldMessages) => {
           const lastMessage = oldMessages[oldMessages.length - 1];
-          if ("created_by" in lastMessage && lastMessage.created_by == "user") {
+          if ("created_by" in lastMessage && lastMessage.created_by != "ai") {
             return [
               ...oldMessages,
               { id: crypto.randomUUID(), created_by: "ai", text: answer },

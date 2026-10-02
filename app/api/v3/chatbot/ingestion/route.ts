@@ -9,9 +9,10 @@ import { VoyageEmbeddings } from "@langchain/community/embeddings/voyage";
 export async function GET(request: NextRequest) {
   try {
     const query = request.nextUrl.searchParams.get("url");
+
     if (!query) {
       return NextResponse.json(
-        { status: 400, message: "Bad request." },
+        { status: "failed", message: "Bad request." },
         { status: 400 },
       );
     }
@@ -39,26 +40,28 @@ export async function GET(request: NextRequest) {
       separators: ["\n\n", "\n", " ", ""],
     });
 
-   
     const embeddings = new GoogleGenerativeAIEmbeddings({
       model: "gemini-embedding-2",
     });
 
+    const vectorStore = new MongoDBAtlasVectorSearch(embeddings, dbConfig);
 
-    const vectorStore = await MongoDBAtlasVectorSearch.fromDocuments(
-      docs,
-      embeddings,
-      dbConfig,
-    );
-
-    
     const chunks = await splitter.splitDocuments(docs);
+    
+     chunks.forEach((chunk)=> {
+      chunk.metadata.created_at = new Date();
+     })
 
     const result = await vectorStore.addDocuments(chunks);
 
-    return NextResponse.json({ status: "ok", documentAdded: result.length}, { status: 200 });
+    return NextResponse.json(
+      { status: "ok", documentAdded: result.length },
+      { status: 200 },
+    );
   } catch (err) {
-    console.log("error:", err);
+
+    console.error("bot ingest pipeline error:", err);
     return NextResponse.json({ status: "error", error: err }, { status: 500 });
+
   }
 }
